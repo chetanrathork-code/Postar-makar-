@@ -1,2 +1,0 @@
-# Postar-makar-
-Na
