@@ -1,0 +1,58 @@
+const canvas = document.getElementById('posterCanvas');
+const ctx = canvas.getContext('2d');
+const imageUpload = document.getElementById('imageUpload');
+const downloadBtn = document.getElementById('downloadBtn');
+
+const poster = new Image();
+poster.src = 'bg.jpg'; 
+
+poster.onload = function() {
+    drawEverything();
+};
+
+function drawEverything(userImg = null) {
+    ctx.clearRect(0, 0, 1000, 1000);
+    
+    // 1. सबसे पहले पोस्टर (Background)
+    ctx.drawImage(poster, 0, 0, 1000, 1000);
+    
+    // 2. यूजर की फोटो को थोड़ा बड़ा करके गोले में सेट करना
+    if (userImg) {
+        ctx.save();
+        
+        // सफेद घेरे का सेंटर
+        const circleX = 755; 
+        const circleY = 485; 
+        const radius = 155; // यह कटिंग का साइज है
+        
+        ctx.beginPath();
+        ctx.arc(circleX, circleY, radius, 0, Math.PI * 2); 
+        ctx.clip(); 
+        
+        // साइज को थोड़ा बड़ा (320x320) किया है ताकि कोना खाली न रहे
+        // और सेंटर में लाने के लिए -160 (320 का आधा) किया है
+        const zoomSize = 500; 
+        ctx.drawImage(userImg, circleX - (zoomSize/2), circleY - (zoomSize/2), zoomSize, zoomSize);
+        
+        ctx.restore();
+    }
+}
+
+imageUpload.addEventListener('change', function(e) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const img = new Image();
+        img.onload = function() {
+            drawEverything(img);
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+});
+
+downloadBtn.addEventListener('click', function() {
+    const link = document.createElement('a');
+    link.download = 'hindu_sammelan_poster.png';
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+});
