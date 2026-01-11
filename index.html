@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poster Upload</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="poster">
+  <img src="bg.jpg" class="background">
+
+  <label class="upload-circle">
+    <span>+</span>
+    <input type="file" accept="image/*" onchange="loadPhoto(event)" hidden>
+    <img id="preview">
+  </label>
+</div>
+<button id="downloadBtn">Download Poster</button>
+<script src="script.js"></script>
+</body>
+</html>
