@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Poster Upload</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Upload Poster</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="poster">
+<div class="poster-container">
+  <!-- Background Poster -->
   <img src="bg.jpg" class="background">
 
+  <!-- Upload Circle -->
   <label class="upload-circle">
     <span>+</span>
     <input type="file" accept="image/*" onchange="loadPhoto(event)" hidden>
     <img id="preview">
   </label>
 </div>
+
+<!-- Download Button -->
 <button id="downloadBtn">Download Poster</button>
+
 <script src="script.js"></script>
 </body>
 </html>

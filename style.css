@@ -1,33 +1,41 @@
+/* Body & basic layout */
 body {
   margin: 0;
-  background: black;
+  font-family: Arial, sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f0f0f0; /* light background */
 }
 
-.poster {
+/* Poster container */
+.poster-container {
   position: relative;
-  width: 80vw;       /* screen width ke 80% */
-  max-width: 400px;  /* maximum size */
-  aspect-ratio: 1/1; /* square poster */
+  width: 80vw;
+  max-width: 400px;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
 }
 
+/* Background image */
 .background {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Upload circle */
 .upload-circle {
   position: absolute;
-  right: 10%;        /* poster ke relative 10% from right */
-  top: 35%;          /* poster ke relative 35% from top */
-  width: 25%;        /* poster ka 25% size */
-  aspect-ratio: 1/1; /* circle */
+  right: 10%;
+  top: 35%;
+  width: 25%;
+  aspect-ratio: 1/1;
   background: white;
   border-radius: 50%;
   display: flex;
@@ -49,9 +57,10 @@ body {
   object-fit: cover;
   display: none;
 }
+
+/* Download button style */
 #downloadBtn {
-  margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 25px;
   font-size: 16px;
   font-weight: bold;
   background-color: #4CAF50;
